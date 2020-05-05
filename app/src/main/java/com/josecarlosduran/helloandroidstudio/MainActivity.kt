@@ -147,7 +147,52 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
     }
+
+    private fun arrays(){
+
+        val name = "Jose"
+        val surname = "Duran"
+        val company = "My Company"
+        val age = "42"
+
+        // Creacion de un array
+
+        val myArray = arrayListOf<String>()
+
+        //Añadir datos de un en uno
+
+        myArray.add(name)
+        myArray.add(surname)
+        myArray.add(company)
+        myArray.add(age)
+
+        println(myArray)
+
+        //Añadir un conjunto de datos
+
+        myArray.addAll(listOf("Bienvenido","aprendiendo","Kotlin"))
+        println(myArray)
+
+        //Acceso a datos
+        val myCompany = myArray[2]
+        println(myCompany)
+
+        //Eliminar datos
+        myArray.removeAt(4)
+        println(myArray)
+
+        //Recorrer datos
+        myArray.forEach {
+            println(it)
+        }
+
+        //otras
+        println(myArray.count())
+
+        myArray.clear()
+
+        println(myArray.count())
+    }
+
 }
