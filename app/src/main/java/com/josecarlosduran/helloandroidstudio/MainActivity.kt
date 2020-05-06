@@ -2,18 +2,29 @@ package com.josecarlosduran.helloandroidstudio
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.strictmode.CredentialProtectedWhileLockedViolation
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //Leccion 1
         //variablesYConstantes()
+        //Leccion 2
         //tiposDeDatos()
+        //Leccion 3
         //sentenciaIf()
+        //Leccion 4
         //sentenciaWhen()
-        arrays()
+        //Leccion 5
+        //arrays()
+        //Leccion 6
+        //maps()
+        //Leccion 7
+        //loops()
+        //Leccion 8
+        nullSafety()
     }
 
     /*
@@ -195,4 +206,97 @@ class MainActivity : AppCompatActivity() {
         println(myArray.count())
     }
 
+    private fun maps(){
+        var myMap: Map<String,Int> = mapOf()
+        println(myMap)
+
+        //Añadiendo valores
+        //myMap = mapOf("Jose" to 1, "Pedro" to 2,"Sara" to 3) // Este mapa seria inmutable
+        myMap = mutableMapOf("Jose" to 1, "Pedro" to 2,"Sara" to 3)
+        println(myMap)
+
+        //Añadir un solo valor
+        myMap["Ana"] = 7
+        myMap.put("Maria",8)
+        println(myMap)
+        //Actualizar un valor (la clave es unica)
+        myMap.put("Jose",10)
+        println(myMap)
+        //Acceso a un dato
+        println(myMap["Jose"])
+
+        //Eliminar un dato
+        myMap.remove("Ana")
+        println(myMap)
+    }
+
+    private fun loops(){
+        val myArray : List<String> = listOf("Bienvenido","aprendiendo","Kotlin")
+        val myMap : MutableMap<String,Int> = mutableMapOf("Jose" to 1, "Pedro" to 2,"Sara" to 3)
+
+        // For
+
+        for (myString in myArray){
+            println(myString)
+        }
+
+        for (myElement in myMap){
+            println("${myElement.key}-${myElement.value}")
+        }
+
+        for (x in 0..10){
+            println(x)
+        }
+
+        for (x in 0..10 step 2){
+            println(x)
+        }
+
+        for (x in 10 downTo 0 step 2){
+            println(x)
+        }
+
+        // While
+
+        var x = 0
+
+        while (x < 10){
+            println(x)
+
+            x++
+
+        }
+
+    }
+
+    private fun nullSafety(){
+        var myString = "Jose"
+
+        // myString = null Esto da error de compilacion
+
+        var mySafetyString : String? = "Jose Null Safety"
+
+        //Safe Call
+
+        println(mySafetyString?.length)
+
+
+        mySafetyString = null
+
+
+        //Safe Call
+
+        println(mySafetyString?.length)?: println("es nula")
+
+        mySafetyString = "Jose"
+
+
+        //Safe Call
+        mySafetyString?.let {
+            println(it)
+        }?:println("es nula")
+
+
+
+    }
 }
