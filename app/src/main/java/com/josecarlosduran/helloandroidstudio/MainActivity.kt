@@ -1,5 +1,6 @@
 package com.josecarlosduran.helloandroidstudio
 
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.strictmode.CredentialProtectedWhileLockedViolation
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         textViewMulti.text = getString(R.string.multi)
+        textViewHello.typeface = Typeface.createFromAsset(assets,"fonts/Starjedi.ttf")
+        textViewWelcome.typeface = Typeface.createFromAsset(assets,"fonts/Starjout.ttf")
 
         //Obtenemos el preferenceManager
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
