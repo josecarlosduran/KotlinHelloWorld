@@ -3,4 +3,7 @@
     <string name="hello">Hola Jose!</string>
     <string name="welcome">Bienvenido</string>
     <string name="multi">Aplicacion multi-idioma</string>
+    <string name="read">Leer</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Borrar</string>
 </resources>

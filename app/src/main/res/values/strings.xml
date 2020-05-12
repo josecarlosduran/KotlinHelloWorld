@@ -3,4 +3,8 @@
     <string name="hello">Hello Jose!</string>
     <string name="welcome">Welcome</string>
     <string name="multi">Multi-language application</string>
+    <string name="read">Read</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
 </resources>

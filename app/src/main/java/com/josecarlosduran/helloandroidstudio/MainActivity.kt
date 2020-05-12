@@ -3,14 +3,56 @@ package com.josecarlosduran.helloandroidstudio
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.strictmode.CredentialProtectedWhileLockedViolation
+import android.preference.PreferenceManager
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+
+    private val key = "MY_KEY"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         textViewMulti.text = getString(R.string.multi)
+
+        //Obtenemos el preferenceManager
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
+        //Recuperamos las preferencias
+
+        getButton.setOnClickListener(){
+            val myPref = prefs.getString(key,"No hay valor para esta clave")
+            if (myPref != null) {
+                showAlert(myPref)
+            }
+        }
+
+        //Guarda las preferencias
+
+        putButton.setOnClickListener(){
+            val editor = prefs.edit()
+            editor.putString(key, editValue.text.toString())
+            editor.apply()
+            showAlert("Hemos guardado la preferencia")
+
+
+        }
+
+        //Borra las preferencias
+
+        deleteButton.setOnClickListener(){
+            val editor = prefs.edit()
+            editor.remove(key)
+            editor.apply()
+            showAlert("Hemos borrado la preferencia")
+        }
+
+
+
+
+
         //Leccion 1
         //variablesYConstantes()
         //Leccion 2
@@ -300,5 +342,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun showAlert(message: String){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("My Preferences")
+        builder.setMessage(message)
+        val dialog = builder.create()
+        dialog.show()
     }
 }
